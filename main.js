@@ -59,9 +59,20 @@ class HashMap {
         }
         return false;
     }
+    remove(key) {
+        if (this.has(key)) {
+          const chosenBucket = this.hash(key);
+          const keyIndex = this._buckets[chosenBucket].find(key);
+          this._buckets[chosenBucket].removeAt(keyIndex);
+          return true;
+        } else {
+          return false;
+        }
+    }
 }
 
 const hor = new HashMap();
 hor.set("jake", "lame");
 hor.set("a", "shame");
-console.log(hor.get("a"));
+console.log(hor.remove("a"));
+console.log(hor.buckets[1]);
