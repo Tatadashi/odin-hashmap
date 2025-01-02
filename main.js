@@ -78,13 +78,21 @@ class HashMap {
         });
         return numberOfKeys;
     }
-    keys() { //return array with all keys inside hashmap
-        //loop through hashmap loop through each linked list 
+    keys() {
         const keyArray = [];
+        this._buckets.forEach((bucket) => {
+          if (bucket) {
+            for (let i = 0; i < bucket.size; i++) {
+                const keyNode = bucket.at(i);
+                keyArray.push(keyNode.key);
+            }
+          }
+        });
+        return keyArray;
     }
 }
 
 const hor = new HashMap();
 hor.set("jake", "lame");
 hor.set("a", "shame");
-console.log(hor.length());
+console.log(hor.keys());
