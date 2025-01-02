@@ -1,6 +1,6 @@
 import { HashMap } from "./hashMap.js";
 
-const test = new HashMap() // or HashMap() if using a factory
+const test = new HashMap(); // or HashMap() if using a factory
 
 test.set("apple", "red");
 test.set("banana", "yellow");
@@ -24,6 +24,3 @@ test.set("moon", "silver");
 test.set("hat", "green");
 test.set("ice cream", "pure white");
 test.set("jacket", "jet black");
-
-console.log(test.remove("hat"));
-console.log(test.entries());

@@ -49,7 +49,7 @@ class HashMap {
     }
   }
   growthMethod() {
-    if (this.length() > (this._capacity * this.#loadFactor)) {
+    if (this.length() > this._capacity * this.#loadFactor) {
       this._capacity *= 2;
       const keyArray = this.keys();
       const valuesArray = this.values();
@@ -94,6 +94,9 @@ class HashMap {
       }
     });
     return numberOfKeys;
+  }
+  clear() {
+    this._buckets = new Array(this._capacity);
   }
   keys() {
     const keyArray = [];
