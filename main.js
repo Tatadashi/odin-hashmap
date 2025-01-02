@@ -42,12 +42,20 @@ class HashMap {
              keyNode.value = value; 
         }
     }
+    get(key) {
+        if (this.has(key)) {
+            const chosenBucket = this.hash(key);
+            const keyIndex = this._buckets[chosenBucket].find(key);
+            const keyNode = this._buckets[chosenBucket].at(keyIndex);
+            return keyNode.value;
+        } else {
+            return null;
+        }
+    }
     has(key) {
         const chosenBucket = this.hash(key);
         if (this.buckets[chosenBucket]) {
-            if (this.buckets[chosenBucket].contains(key)) {
-                return true;
-            }
+            return this.buckets[chosenBucket].contains(key);
         }
         return false;
     }
@@ -55,5 +63,5 @@ class HashMap {
 
 const hor = new HashMap();
 hor.set("jake", "lame");
-hor.set("a", "lame");
-console.log(hor.buckets[1]);
+hor.set("a", "shame");
+console.log(hor.get("a"));
