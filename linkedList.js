@@ -30,19 +30,19 @@ class LinkedList {
     return temp;
   }
 
-  append(value) {
+  append(key) {
     if (this._head === null) {
-      this._head = new Node(value);
+      this._head = new Node(key);
     } else {
       let temp = this._head;
       while (temp.nextNode !== null) {
         temp = temp.nextNode;
       }
-      temp.nextNode = new Node(value);
+      temp.nextNode = new Node(key);
     }
   }
-  prepend(value) {
-    const newNode = new Node(value);
+  prepend(key) {
+    const newNode = new Node(key);
     newNode.nextNode = this._head;
     this._head = newNode;
   }
@@ -54,7 +54,7 @@ class LinkedList {
       tempIndex++;
     }
     if (temp === null) {
-      console.error("Value not in Linked List");
+      console.error("Key not in Linked List");
       return;
     }
     return temp;
@@ -73,21 +73,21 @@ class LinkedList {
       temp.nextNode = null;
     }
   }
-  contains(value) {
+  contains(key) {
     let temp = this._head;
     while (temp !== null) {
-      if (temp.value == value) {
+      if (temp.key == key) {
         return true;
       }
       temp = temp.nextNode;
     }
     return false;
   }
-  find(value) {
+  find(key) {
     let temp = this._head;
     let tempIndex = 0;
     while (temp !== null) {
-      if (temp.value == value) {
+      if (temp.key == key) {
         return tempIndex;
       }
       temp = temp.nextNode;
@@ -102,17 +102,17 @@ class LinkedList {
       finalString = null;
       return finalString;
     } else {
-      finalString = `( ${temp.value} )`;
+      finalString = `( ${temp.key} )`;
       temp = temp.nextNode;
       while (temp !== null) {
-        finalString += ` -> ( ${temp.value} )`;
+        finalString += ` -> ( ${temp.key} )`;
         temp = temp.nextNode;
       }
       finalString += ` -> null`;
       return finalString;
     }
   }
-  insertAt(value, index) {
+  insertAt(key, index) {
     if (index - 1 >= this.size) {
       console.error("Index Input greater than Indices in Linked List");
     } else {
@@ -122,7 +122,7 @@ class LinkedList {
         temp = temp.nextNode;
         tempIndex++;
       }
-      temp = new Node(value, temp);
+      temp = new Node(key, temp);
       if (tempIndex == 0) {
         this._head = temp;
       } else {
@@ -152,7 +152,8 @@ class LinkedList {
 }
 
 class Node {
-  constructor(value = null, nextNode = null) {
+  constructor(key = null, value = null, nextNode = null) {
+    this.key = key;
     this.value = value;
     this.nextNode = nextNode;
   }

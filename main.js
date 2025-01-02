@@ -19,16 +19,32 @@ class HashMap {
 
         const primeNumber = 31;
         for (let i = 0; i < key.length; i++) {
-          hashCode = primeNumber * hashCode + key.charCodeAt(i);
-          hashCode %= 16;
+          hashCode = (primeNumber * hashCode + key.charCodeAt(i)) % this.#capacity;
         }
 
         return hashCode;
     }
     set(key, value) {
-
+        const chosenBucket = this.hash(key);
+        if (!this._buckets[chosenBucket]) {
+          let newList = new LinkedList();
+          newList.append(key);
+          const keyNode = newList.head;
+          keyNode.value = value;
+          this._buckets[chosenBucket] = newList;
+        } else if (this.has(key)) {
+            const keyIndex = this._buckets[chosenBucket].find(key);
+            const keyNode = this._buckets[chosenBucket].at(keyIndex);
+            keyNode.value = value; 
+        } else {
+             this._buckets[chosenBucket].append(key);
+             const keyNode = this._buckets[chosenBucket].tail;
+             keyNode.value = value; 
+        }
     }
 }
 
 const hor = new HashMap();
+hor.set("jake", "lame");
+//hor.set("a", "lame");
 console.log(hor.buckets);
