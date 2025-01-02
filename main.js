@@ -90,9 +90,21 @@ class HashMap {
         });
         return keyArray;
     }
+    values() {
+        const valueArray = [];
+        this._buckets.forEach((bucket) => {
+          if (bucket) {
+            for (let i = 0; i < bucket.size; i++) {
+              const keyNode = bucket.at(i);
+              valueArray.push(keyNode.value);
+            }
+          }
+        });
+        return valueArray;
+    }
 }
 
 const hor = new HashMap();
 hor.set("jake", "lame");
 hor.set("a", "shame");
-console.log(hor.keys());
+console.log(hor.values());
