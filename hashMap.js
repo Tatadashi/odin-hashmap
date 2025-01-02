@@ -102,9 +102,18 @@ class HashMap {
         });
         return valueArray;
     }
+    entries() {
+      const keyValueArray = [];
+      const keyArray = this.keys();
+      const valueArray = this.values();
+      for (let i = 0; i < keyArray.length; i++) {
+        keyValueArray.push(`[${keyArray[i]}, ${valueArray[i]}]`);
+      }
+      return keyValueArray;
+    }
 }
 
 const hor = new HashMap();
 hor.set("jake", "lame");
 hor.set("a", "shame");
-console.log(hor.values());
+console.log(hor.entries());
