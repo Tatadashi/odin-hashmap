@@ -42,9 +42,18 @@ class HashMap {
              keyNode.value = value; 
         }
     }
+    has(key) {
+        const chosenBucket = this.hash(key);
+        if (this.buckets[chosenBucket]) {
+            if (this.buckets[chosenBucket].contains(key)) {
+                return true;
+            }
+        }
+        return false;
+    }
 }
 
 const hor = new HashMap();
 hor.set("jake", "lame");
-//hor.set("a", "lame");
-console.log(hor.buckets);
+hor.set("a", "lame");
+console.log(hor.buckets[1]);
