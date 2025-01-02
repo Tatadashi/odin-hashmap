@@ -69,10 +69,22 @@ class HashMap {
           return false;
         }
     }
+    length() {
+        let numberOfKeys = 0;
+        this._buckets.forEach(bucket => {
+            if (bucket) {
+                numberOfKeys += bucket.size;
+            }
+        });
+        return numberOfKeys;
+    }
+    keys() { //return array with all keys inside hashmap
+        //loop through hashmap loop through each linked list 
+        const keyArray = [];
+    }
 }
 
 const hor = new HashMap();
 hor.set("jake", "lame");
 hor.set("a", "shame");
-console.log(hor.remove("a"));
-console.log(hor.buckets[1]);
+console.log(hor.length());
